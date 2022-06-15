@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run danielingemar/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: får man kolla i AWS ex "us-west-2"
+  app: "namnet i AWS"
+  env: "sista namnet i AWS"
+  bucket_name: "sök efter S3 i AWS och leta efter namnet"
+  bucket_path: "app namn"
+  on:
+    branch:master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
